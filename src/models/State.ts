@@ -1,5 +1,5 @@
 import { IUser } from "./IUser";
 
 export type State = {
-  usersList: IUser[];
+  usersList: IUser[] | null;
 };

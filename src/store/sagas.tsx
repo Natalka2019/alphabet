@@ -7,9 +7,6 @@ import { IUser } from "../models";
 function* fetchUsers() {
   try {
     const response: IUser[] = yield call(API.getUsers);
-
-    console.log(response);
-
     yield put(actions.getUsersSuccess(response));
   } catch (error) {
     console.log(error);

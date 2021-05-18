@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <div className={styles.container}>
       <Link to="/employees" className={styles.link}>
-        Employees
+        Visit Employees page
       </Link>
     </div>
   );
