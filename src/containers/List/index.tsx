@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { IUser } from "../../models";
 import { alphabet } from "../../utilities";
@@ -8,18 +8,35 @@ interface Props {
 }
 
 const List: React.FC<Props> = ({ list }) => {
+  const [start, setStart] = useState(0);
   console.log(list);
   console.log(alphabet);
 
-  const b = list?.filter((employee) => employee.lastName[0] === "Y");
-
-  console.log(b);
+  const listToRender = alphabet.slice(start, start + 3);
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>Employees</div>
-      <ul>
-        {alphabet.map((letter) => {
+      <div className={styles.pagination}>
+        {start > 2 && (
+          <div
+            className={styles.backButton}
+            onClick={() => setStart(start - 3)}
+          >
+            Previous
+          </div>
+        )}
+        {start < alphabet.length - 2 && (
+          <div
+            className={styles.forwardButton}
+            onClick={() => setStart(start + 3)}
+          >
+            Next
+          </div>
+        )}
+      </div>
+      <ul className={styles.lettersContainer}>
+        {listToRender.map((letter) => {
           return (
             <li key={letter}>
               <div className={styles.letter}>{letter}</div>
@@ -32,7 +49,7 @@ const List: React.FC<Props> = ({ list }) => {
                     ?.filter((employee) => employee.lastName[0] === letter)
                     .map(({ id, firstName, lastName }) => {
                       return (
-                        <li key={id}>
+                        <li className={styles.nameContainer} key={id}>
                           {lastName} {firstName}
                         </li>
                       );

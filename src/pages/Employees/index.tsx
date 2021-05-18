@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
 import { List, Selected } from "../../containers";
 import * as actions from "../../store/actions";
-import { State, IUser, IList } from "../../models";
+import { State, IUser } from "../../models";
 import { alphabet } from "../../utilities";
 import { isConditionalExpression } from "typescript";
 
@@ -23,8 +23,6 @@ const Employees: React.FC = () => {
     if (lowerCaseA > lowerCaseB) return 1;
     return 0;
   });
-
-  console.log(sortedUsersList);
 
   // const groups = sortedUsersList?.reduce((acc: IList, val: IUser) => {
   //   let char: string = val.lastName.charAt(0);
