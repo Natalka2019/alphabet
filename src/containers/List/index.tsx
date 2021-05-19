@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { IUser } from "../../models";
 import { alphabet } from "../../utilities";
+import { RadioButtonsList } from "../../components";
 
 interface Props {
   list: IUser[] | undefined;
@@ -13,6 +14,20 @@ const List: React.FC<Props> = ({ list }) => {
   console.log(alphabet);
 
   const listToRender = alphabet.slice(start, start + 3);
+  const statusOptions = [
+    {
+      value: "true",
+      label: "active",
+    },
+    {
+      value: "false",
+      label: "not active",
+    },
+  ];
+
+  const handleOptionChange = (id: string) => {
+    console.log(id);
+  };
 
   return (
     <div className={styles.container}>
@@ -43,14 +58,23 @@ const List: React.FC<Props> = ({ list }) => {
               <ul>
                 {list?.filter((employee) => employee.lastName[0] === letter)
                   .length === 0 ? (
-                  <div>----</div>
+                  <li>----</li>
                 ) : (
                   list
                     ?.filter((employee) => employee.lastName[0] === letter)
                     .map(({ id, firstName, lastName }) => {
                       return (
                         <li className={styles.nameContainer} key={id}>
-                          {lastName} {firstName}
+                          <div className={styles.name}>
+                            {lastName} {firstName}
+                          </div>
+                          <RadioButtonsList
+                            name={`${id}`}
+                            id={`${id}`}
+                            options={statusOptions}
+                            onOptionChange={handleOptionChange}
+                            initialValue={statusOptions[1]}
+                          />
                         </li>
                       );
                     })

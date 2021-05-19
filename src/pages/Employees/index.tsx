@@ -4,8 +4,6 @@ import styles from "./styles.module.css";
 import { List, Selected } from "../../containers";
 import * as actions from "../../store/actions";
 import { State, IUser } from "../../models";
-import { alphabet } from "../../utilities";
-import { isConditionalExpression } from "typescript";
 
 const Employees: React.FC = () => {
   const dispatch = useDispatch();

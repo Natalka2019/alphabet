@@ -17,9 +17,15 @@ ul {
 }
 .lettersContainer {
   display: flex;
+
 }
 .nameContainer {
   display: flex;
+  flex-direction: column;
   border: 1px solid blue;
   width: 150px;
+}
+.name {
+  display: flex;
+  border: 1px solid red;
 }
