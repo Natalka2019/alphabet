@@ -20,3 +20,16 @@ export function getUsersFailed(payload: string) {
     payload,
   };
 }
+
+export function addToSelectedList(payload: string) {
+  return {
+    type: actionTypes.ADD_TO_SELECTED_LIST,
+    payload,
+  };
+}
+export function removeFromSelectedList(payload: string) {
+  return {
+    type: actionTypes.REMOVE_FROM_SELECTED_LIST,
+    payload,
+  };
+}

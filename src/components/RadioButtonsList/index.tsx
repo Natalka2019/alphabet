@@ -24,15 +24,11 @@ const RadioButtonList: React.FC<Props> = ({
 }) => {
   const [checked, setChecked] = useState(initialValue);
 
-  console.log(initialValue);
-
   const handleChange = (event: any) => {
-    console.log(event);
     setChecked(event.target);
     onOptionChange(event.target.id);
   };
 
-  console.log(checked);
   return (
     <div className={styles.container}>
       {options.map((el) => {

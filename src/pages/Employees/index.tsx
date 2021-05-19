@@ -22,14 +22,6 @@ const Employees: React.FC = () => {
     return 0;
   });
 
-  // const groups = sortedUsersList?.reduce((acc: IList, val: IUser) => {
-  //   let char: string = val.lastName.charAt(0);
-  //   acc[char] = ([] as any).concat(acc[char] || [], val);
-  //   return acc;
-  // }, {});
-
-  // const listToRender = { ...alphabet, ...groups };
-
   if (usersList === null) {
     return (
       <div className={styles.container}>

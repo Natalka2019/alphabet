@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
 import { IUser } from "../../models";
 import { alphabet } from "../../utilities";
 import { RadioButtonsList } from "../../components";
+import * as actions from "../../store/actions";
 
 interface Props {
   list: IUser[] | undefined;
 }
 
 const List: React.FC<Props> = ({ list }) => {
+  const dispatch = useDispatch();
   const [start, setStart] = useState(0);
   console.log(list);
   console.log(alphabet);
@@ -26,7 +29,13 @@ const List: React.FC<Props> = ({ list }) => {
   ];
 
   const handleOptionChange = (id: string) => {
-    console.log(id);
+    const status = id.split("-")[0];
+    const employeeId = id.split("-")[1];
+    if (status === "true") {
+      dispatch(actions.addToSelectedList(employeeId));
+    } else {
+      dispatch(actions.removeFromSelectedList(employeeId));
+    }
   };
 
   return (
