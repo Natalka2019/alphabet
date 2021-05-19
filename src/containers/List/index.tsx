@@ -5,6 +5,7 @@ import { IUser } from "../../models";
 import { alphabet } from "../../utilities";
 import { RadioButtonsList } from "../../components";
 import * as actions from "../../store/actions";
+import { State } from "../../models";
 
 interface Props {
   list: IUser[] | undefined;
@@ -14,7 +15,9 @@ const List: React.FC<Props> = ({ list }) => {
   const dispatch = useDispatch();
   const [start, setStart] = useState(0);
   console.log(list);
-  console.log(alphabet);
+
+  const selectedList = useSelector((state: State) => state.selectedList);
+  // localStorage.setItem("selected", JSON.stringify(selectedList));
 
   const listToRender = alphabet.slice(start, start + 3);
   const statusOptions = [
@@ -36,6 +39,18 @@ const List: React.FC<Props> = ({ list }) => {
     } else {
       dispatch(actions.removeFromSelectedList(employeeId));
     }
+  };
+
+  const findStatus = (id: string) => {
+    const activeEmployee = selectedList.find((el) => el.id === id);
+
+    return activeEmployee ? statusOptions[0] : statusOptions[1];
+  };
+
+  const findStyle = (id: string) => {
+    const activeEmployee = selectedList.find((el) => el.id === id);
+
+    return activeEmployee ? "nameSelected" : "name";
   };
 
   return (
@@ -74,7 +89,7 @@ const List: React.FC<Props> = ({ list }) => {
                     .map(({ id, firstName, lastName }) => {
                       return (
                         <li className={styles.nameContainer} key={id}>
-                          <div className={styles.name}>
+                          <div className={styles[findStyle(id)]}>
                             {lastName} {firstName}
                           </div>
                           <RadioButtonsList
@@ -82,7 +97,7 @@ const List: React.FC<Props> = ({ list }) => {
                             id={`${id}`}
                             options={statusOptions}
                             onOptionChange={handleOptionChange}
-                            initialValue={statusOptions[1]}
+                            initialValue={findStatus(id)}
                           />
                         </li>
                       );
