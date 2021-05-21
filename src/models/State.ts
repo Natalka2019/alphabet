@@ -2,5 +2,5 @@ import { IUser } from "./IUser";
 
 export type State = {
   usersList: IUser[] | null;
-  selectedList: IUser[] | [];
+  selectedList: IUser[];
 };

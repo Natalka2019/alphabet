@@ -14,10 +14,8 @@ interface Props {
 const List: React.FC<Props> = ({ list }) => {
   const dispatch = useDispatch();
   const [start, setStart] = useState(0);
-  console.log(list);
 
   const selectedList = useSelector((state: State) => state.selectedList);
-  // localStorage.setItem("selected", JSON.stringify(selectedList));
 
   const listToRender = alphabet.slice(start, start + 3);
   const statusOptions = [
