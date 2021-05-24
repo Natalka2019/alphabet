@@ -1,0 +1,39 @@
+.container {
+  height: 100%;
+
+  .monthsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  
+    padding-left: 30px;
+    margin-top: 60px;
+
+    border-left: 3px solid grey;
+
+  
+    .monthContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    
+      .monthTitle {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .employeesList {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        list-style-type: disc;
+
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+

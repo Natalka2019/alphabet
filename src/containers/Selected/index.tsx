@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { State, IUser } from "../../models";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
+import { sortByLastName } from "../../utilities";
 
 const Selected: React.FC = () => {
   const selectedList = useSelector((state: State) => state.selectedList);
@@ -33,19 +34,14 @@ const Selected: React.FC = () => {
       month: "long",
     }).format(date);
     acc[month] = ([] as any).concat(acc[month] || [], val);
-    acc[month].sort(function sortByName(a: IUser, b: IUser) {
-      let lowerCaseA = a.lastName.toLowerCase();
-      let lowerCaseB = b.lastName.toLowerCase();
-      if (lowerCaseA < lowerCaseB) return -1;
-      if (lowerCaseA > lowerCaseB) return 1;
-      return 0;
-    });
+    acc[month].sort(sortByLastName);
+
     return acc;
   }, []);
 
   console.log(groups);
 
-  const getLocalDate = (dob: any) => {
+  const getDayMonth = (dob: any) => {
     const date = new Date(dob);
     return date.toLocaleString("en-UK", {
       day: "numeric",
@@ -61,24 +57,25 @@ const Selected: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div>Employees birthday</div>
       {selectedList?.length === 0 && (
         <div className={styles.noSelectedData}>Employees List is empty</div>
       )}
-      {selectedList?.length > 0 &&
-        Object.entries(groups).map(([key, value]) => (
-          <li key={key}>
-            <div className={styles.monthTitle}>{key}</div>
-            <ul>
-              {(value as any).map((el: IUser) => (
-                <li key={el.id}>
-                  {el.lastName} {el.firstName} - {getLocalDate(el.dob)},{" "}
-                  {getYear(el.dob)} year
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
+      <ul className={styles.monthsContainer}>
+        {selectedList?.length > 0 &&
+          Object.entries(groups).map(([key, value]) => (
+            <li className={styles.monthContainer} key={key}>
+              <div className={styles.monthTitle}>{key}</div>
+              <ul className={styles.employeesList}>
+                {(value as any).map((el: IUser) => (
+                  <li key={el.id}>
+                    {el.lastName} {el.firstName} - {getDayMonth(el.dob)},{" "}
+                    {getYear(el.dob)} year
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 };

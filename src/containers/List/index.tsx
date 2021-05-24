@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import { IUser } from "../../models";
 import { alphabet } from "../../utilities";
-import { RadioButtonsList } from "../../components";
+import { RadioButtonsList, NavigationButton } from "../../components";
 import * as actions from "../../store/actions";
 import { State } from "../../models";
 
@@ -47,47 +47,52 @@ const List: React.FC<Props> = ({ list }) => {
 
   const findStyle = (id: string) => {
     const activeEmployee = selectedList.find((el) => el.id === id);
-
-    return activeEmployee ? "nameSelected" : "name";
+    return activeEmployee ? "selected" : "";
   };
+
+  console.log(alphabet);
+  console.log(list);
+
+  //console.log(allLettersList);
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Employees</div>
       <div className={styles.pagination}>
         {start > 2 && (
-          <div
+          <NavigationButton
+            title="Previous"
+            onClick={() => setStart((prevStart) => prevStart - 3)}
             className={styles.backButton}
-            onClick={() => setStart(start - 3)}
-          >
-            Previous
-          </div>
+          />
         )}
         {start < alphabet.length - 2 && (
-          <div
-            className={styles.forwardButton}
-            onClick={() => setStart(start + 3)}
-          >
-            Next
-          </div>
+          <NavigationButton
+            title="Next"
+            onClick={() => setStart((prevStart) => prevStart + 3)}
+            className={styles.nextButton}
+          />
         )}
       </div>
       <ul className={styles.lettersContainer}>
         {listToRender.map((letter) => {
           return (
-            <li key={letter}>
+            <li className={styles.letterContainer} key={letter}>
               <div className={styles.letter}>{letter}</div>
-              <ul>
+              <ul className={styles.employeesList}>
                 {list?.filter((employee) => employee.lastName[0] === letter)
                   .length === 0 ? (
-                  <li>----</li>
+                  <li className={styles.name}>----</li>
                 ) : (
                   list
                     ?.filter((employee) => employee.lastName[0] === letter)
                     .map(({ id, firstName, lastName }) => {
                       return (
                         <li className={styles.nameContainer} key={id}>
-                          <div className={styles[findStyle(id)]}>
+                          <div
+                            className={`${styles.name} ${
+                              styles[findStyle(id)]
+                            }`}
+                          >
                             {lastName} {firstName}
                           </div>
                           <RadioButtonsList

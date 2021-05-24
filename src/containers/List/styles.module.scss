@@ -1,0 +1,60 @@
+.container {
+  height: 100%;
+
+  .pagination {
+    display: flex;
+    padding: 0 20px;
+
+    .backButton {
+      margin: 0 auto 0 10px;
+    }
+    .nextButton {
+      margin: 0 10px 0 auto;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .lettersContainer {
+    display: flex;
+    justify-content: center;
+
+    .letterContainer {
+      width: 200px;
+      padding: 10px;
+
+      .letter {
+        display: flex;
+        justify-content: flex-start;
+        font-weight: bold;
+        padding: 10px 0;
+      }
+
+      .employeesList {
+        list-style-type: none;
+        padding: 0;
+
+        .nameContainer {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+
+        }
+
+        .name {
+          display: flex;
+          font-weight: bold;
+        }
+        .selected {
+          color: blue;
+        }
+
+      }
+
+    }
+
+  }
+
+}
