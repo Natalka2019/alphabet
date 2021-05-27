@@ -24,8 +24,6 @@ const Selected: React.FC = () => {
     return acc;
   }, []);
 
-  console.log(groups);
-
   return (
     <div className={styles.container}>
       {selectedList?.length === 0 && (

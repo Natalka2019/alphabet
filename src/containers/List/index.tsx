@@ -49,11 +49,6 @@ const List: React.FC<Props> = ({ list }) => {
     return activeEmployee ? "selected" : "";
   };
 
-  console.log(alphabet);
-  console.log(list);
-
-  //console.log(allLettersList);
-
   return (
     <div className={styles.container}>
       <div className={styles.pagination}>

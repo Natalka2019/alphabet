@@ -5,7 +5,6 @@ import { List, Selected } from "../../containers";
 import * as actions from "../../store/actions";
 import { State } from "../../models";
 import { sortByLastName } from "../../utilities";
-//import { IUser } from "../../models";
 
 const Employees: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,15 +16,6 @@ const Employees: React.FC = () => {
   const usersList = useSelector((state: State) => state.usersList);
 
   const sortedUsersList = usersList?.sort(sortByLastName);
-
-  // const groupedList = usersList?.reduce((acc: any, val: IUser) => {
-  //   acc[val.lastName[0]] = ([] as any).concat(acc[val.lastName[0]] || [], val);
-  //   acc[val.lastName[0]].sort(sortByLastName);
-
-  //   return acc;
-  // }, []);
-
-  // console.log(groupedList);
 
   if (usersList === null) {
     return (
@@ -44,7 +34,6 @@ const Employees: React.FC = () => {
         </div>
         <div className={styles.sectionContent}>
           <List list={sortedUsersList} />
-          {/* <List list={groupedList} /> */}
         </div>
       </div>
       <div className={styles.smallContainer}>
