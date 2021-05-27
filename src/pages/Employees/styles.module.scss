@@ -3,11 +3,22 @@
 
   height: 100vh;
 
+  @media (max-width: 800px) {
+    flex-direction: column;
+    height: 100%;
+  }
+
   .smallContainer {
     width: 50%;
     height: 100%;
 
     overflow: scroll;
+
+    @media (max-width: 800px) {
+      width: 100%;
+      position: relative;
+      overflow: visible;
+    }
 
     .sectionTitle {
       position: fixed;
@@ -15,10 +26,22 @@
       margin-bottom: 100px;
       background-color:white;
       z-index: 10;
+
+      @media (max-width: 800px) {
+        width: 100%;
+        position:relative;
+        margin: 0;
+        z-index: unset;
+        padding: 10px;
+      }
     }
     .sectionContent {
       position: relative;
       top: 80px;
+
+      @media (max-width: 800px) {
+        top: 10px;
+      }
 
     }
   }
@@ -32,3 +55,5 @@
     font-size: 30px;
   }
 }
+
+

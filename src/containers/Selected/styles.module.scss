@@ -8,6 +8,10 @@
 
     border-left: 3px solid grey;
 
+    @media (max-width: 800px) {
+      border: none;
+    }
+
   }
 
   .monthsContainer {
@@ -19,6 +23,11 @@
     margin-top: 60px;
 
     border-left: 3px solid grey;
+
+    @media (max-width: 800px) {
+      border: none;
+      padding: 15px;
+    }
 
     .monthContainer {
       display: flex;
@@ -39,6 +48,8 @@
         list-style-type: disc;
 
         padding-left: 20px;
+
+        text-align: start;
       }
     }
   }
