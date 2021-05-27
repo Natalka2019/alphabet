@@ -41,7 +41,6 @@ const List: React.FC<Props> = ({ list }) => {
 
   const findStatus = (id: string) => {
     const activeEmployee = selectedList.find((el) => el.id === id);
-
     return activeEmployee ? statusOptions[0] : statusOptions[1];
   };
 
