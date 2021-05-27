@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 
 interface Props {
   title: string;
-  onClick: (event: any) => void;
+  onClick: (event: React.MouseEvent<HTMLElement>) => void;
   className: string;
 }
 

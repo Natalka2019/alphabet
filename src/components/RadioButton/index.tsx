@@ -7,7 +7,7 @@ interface Props {
   label: string;
   name: string;
   isChecked: boolean;
-  onRadioButtonChange: (event: any) => void;
+  onRadioButtonChange: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
 const RadioButton: React.FC<Props> = ({

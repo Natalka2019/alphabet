@@ -1,6 +1,8 @@
+import {IUser} from '../models';
+
 const currentMonth = new Date().getMonth();
 
-export const sortByMonth = (a: any, b: any) => {
+export const sortByMonth = (a: IUser, b: IUser) => {
   let date1 = new Date(a.dob);
   let date2 = new Date(b.dob);
 
