@@ -10,14 +10,14 @@ const Employees: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.getUsers());
+    dispatch(actions.getEmployees());
   }, [dispatch]);
 
-  const usersList = useSelector((state: State) => state.usersList);
+  const employeesList = useSelector((state: State) => state.employeesList);
 
-  const sortedUsersList = usersList?.sort(sortByLastName);
+  const sortedEmployeesList = employeesList?.sort(sortByLastName);
 
-  if (usersList === null) {
+  if (employeesList === null) {
     return (
       <div className={styles.container}>
         <div className={styles.loadingMessage}>
@@ -33,7 +33,7 @@ const Employees: React.FC = () => {
           <h2>Employees</h2>
         </div>
         <div className={styles.sectionContent}>
-          <List list={sortedUsersList} />
+          <List list={sortedEmployeesList} />
         </div>
       </div>
       <div className={styles.smallContainer}>

@@ -1,4 +1,4 @@
-export const getUsers = async () => {
+export const getEmployees = async () => {
   const response = await fetch(
     `https://yalantis-react-school-api.yalantis.com/api/task0/users`
   );

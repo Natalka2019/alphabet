@@ -1,2 +1,2 @@
-export * from './IUser';
+export * from './IEmployee';
 export * from './State';

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.scss";
-import { IUser } from "../../models";
+import { IEmployee } from "../../models";
 import { alphabet } from "../../utilities";
 import { RadioButtonsList, NavigationButton } from "../../components";
 import * as actions from "../../store/actions";
 import { State } from "../../models";
 
 interface Props {
-  list: IUser[] | undefined;
+  list: IEmployee[] | undefined;
 }
 
 const List: React.FC<Props> = ({ list }) => {

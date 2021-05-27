@@ -1,6 +1,6 @@
-import { IUser } from "./IUser";
+import { IEmployee } from "./IEmployee";
 
 export type State = {
-  usersList: IUser[] | null;
-  selectedList: IUser[];
+  employeesList: IEmployee[] | null;
+  selectedList: IEmployee[];
 };

@@ -3,25 +3,25 @@ import * as actionTypes from "./actionTypes";
 import { State } from "../models";
 
 const InitialState: State = {
-  usersList: null,
+  employeesList: null,
   selectedList: [],
 };
 
 const RootReducer: Reducer<State> = (state = InitialState, action): State => {
   switch (action.type) {
-    case actionTypes.GET_USERS_SUCCESS: {
+    case actionTypes.GET_EMPLOYEES_SUCCESS: {
       const { payload } = action;
       return {
         ...state,
-        usersList: payload,
+        employeesList: payload,
       };
     }
     case actionTypes.ADD_TO_SELECTED_LIST: {
       const { payload } = action;
       let selectedEmployee;
 
-      if (state.usersList) {
-        selectedEmployee = state.usersList.find((el) => el.id === payload);
+      if (state.employeesList) {
+        selectedEmployee = state.employeesList.find((el) => el.id === payload);
       }
 
       const updatedList = selectedEmployee

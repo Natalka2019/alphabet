@@ -2,18 +2,18 @@ import { takeEvery, put, call, all } from "redux-saga/effects";
 import * as actions from "./actions";
 import * as actionTypes from "./actionTypes";
 import * as API from "./services";
-import { IUser } from "../models";
+import { IEmployee } from "../models";
 
-function* fetchUsers() {
+function* fetchEmployees() {
   try {
-    const response: IUser[] = yield call(API.getUsers);
-    yield put(actions.getUsersSuccess(response));
+    const response: IEmployee[] = yield call(API.getEmployees);
+    yield put(actions.getEmployeesSuccess(response));
   } catch (error) {
     console.log(error);
-    yield put(actions.getUsersFailed(error));
+    yield put(actions.getEmployeesFailed(error));
   }
 }
 
 export default function* watch() {
-  yield all([takeEvery(actionTypes.GET_USERS, fetchUsers)]);
+  yield all([takeEvery(actionTypes.GET_EMPLOYEES, fetchEmployees)]);
 }

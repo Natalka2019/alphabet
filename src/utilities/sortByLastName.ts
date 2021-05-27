@@ -1,6 +1,6 @@
-import {IUser} from '../models';
+import {IEmployee} from '../models';
 
-export const sortByLastName = (a: IUser, b: IUser) => {
+export const sortByLastName = (a: IEmployee, b: IEmployee) => {
   let lowerCaseA = a.lastName.toLowerCase();
   let lowerCaseB = b.lastName.toLowerCase();
   if (lowerCaseA < lowerCaseB) return -1;

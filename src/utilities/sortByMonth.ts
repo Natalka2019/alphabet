@@ -1,8 +1,8 @@
-import {IUser} from '../models';
+import {IEmployee} from '../models';
 
 const currentMonth = new Date().getMonth();
 
-export const sortByMonth = (a: IUser, b: IUser) => {
+export const sortByMonth = (a: IEmployee, b: IEmployee) => {
   let date1 = new Date(a.dob);
   let date2 = new Date(b.dob);
 

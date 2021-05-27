@@ -1,22 +1,22 @@
 import * as actionTypes from "./actionTypes";
-import { IUser } from "../models";
+import { IEmployee } from "../models";
 
-export function getUsers() {
+export function getEmployees() {
   return {
-    type: actionTypes.GET_USERS,
+    type: actionTypes.GET_EMPLOYEES,
   };
 }
 
-export function getUsersSuccess(payload: IUser[]) {
+export function getEmployeesSuccess(payload: IEmployee[]) {
   return {
-    type: actionTypes.GET_USERS_SUCCESS,
+    type: actionTypes.GET_EMPLOYEES_SUCCESS,
     payload,
   };
 }
 
-export function getUsersFailed(payload: string) {
+export function getEmployeesFailed(payload: string) {
   return {
-    type: actionTypes.GET_USERS_FAILED,
+    type: actionTypes.GET_EMPLOYEES_FAILED,
     payload,
   };
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { State, IUser } from "../../models";
+import { State, IEmployee } from "../../models";
 import styles from "./styles.module.scss";
 import {
   sortByLastName,
@@ -13,7 +13,7 @@ const Selected: React.FC = () => {
   const selectedList = useSelector((state: State) => state.selectedList);
   const sortedList = selectedList?.sort(sortByMonth);
 
-  const groups = sortedList?.reduce((acc: any, val: IUser) => {
+  const groups = sortedList?.reduce((acc: any, val: IEmployee) => {
     let date = new Date(val.dob);
     let month: string = new Intl.DateTimeFormat("en-US", {
       month: "long",
@@ -35,7 +35,7 @@ const Selected: React.FC = () => {
             <li className={styles.monthContainer} key={key}>
               <div className={styles.monthTitle}>{key}</div>
               <ul className={styles.employeesList}>
-                {(value as IUser[]).map((el: IUser) => (
+                {(value as IEmployee[]).map((el: IEmployee) => (
                   <li key={el.id}>
                     {el.lastName} {el.firstName} - {getDayMonth(el.dob)},{" "}
                     {getYear(el.dob)} year
